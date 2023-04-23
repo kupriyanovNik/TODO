@@ -40,3 +40,9 @@ struct RadioToggleStyle: ToggleStyle {
         .frame(width: UIScreen.main.bounds.width / 2.6)
     }
 }
+
+enum FilterType: String {
+    case all = "Все"
+    case done = "Сделанные"
+    case notDone = "Не сделанные"
+}
