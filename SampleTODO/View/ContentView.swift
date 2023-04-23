@@ -29,7 +29,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             MainList()
-                .mainToolbar(model: model, toolbarItem: {
+                .mainToolbar(model: filteredModel, toolbarItem: {
                     Picker(selection: $filterType, label: Image(systemName: "")) {
                         Text("Все").tag(FilterType.all)
                         Text("Сделанные").tag(FilterType.done)
@@ -58,13 +58,23 @@ struct ContentView: View {
     }
     @ViewBuilder func MainList() -> some View {
         VStack {
-            if !model.isEmpty {
+            if !filteredModel.isEmpty {
                 List {
                     ForEach(filteredModel) { task in
                         TaskCell(task: task)
                     }
                     .onDelete(perform: deleteSpendings)
                 }
+            } else {
+                RoundedRectangle(cornerRadius: 15)
+                    .foregroundColor(Color.gray.opacity(0.5))
+                    .frame(width: 350, height: 200, alignment: .center)
+                    .overlay {
+                        Text("**Пусто!!!**\nДобавьте новую задачу, используя кнопку в верхнем правом углу.")
+                            .font(.title3)
+                            .lineLimit(nil)
+                            .multilineTextAlignment(.center)
+                    }
             }
         }
     }
@@ -78,7 +88,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 private extension View {
-    func mainToolbar(model: FetchedResults<ModelCase>, toolbarItem: any View, action: @escaping () -> ()) -> some View {
+    func mainToolbar(model: [FetchedResults<ModelCase>.Element], toolbarItem: any View, action: @escaping () -> ()) -> some View {
         self
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
