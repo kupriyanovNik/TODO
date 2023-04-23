@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.requestReview) var requestReview
     
     @Environment(\.managedObjectContext) var managedObjContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.when, order: .reverse)]) var model: FetchedResults<ModelCase>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.when)]) var model: FetchedResults<ModelCase>
     var body: some View {
         
         NavigationStack {
@@ -35,7 +35,11 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "plus.circle")
                     }
-
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if !self.model.isEmpty {
+                        EditButton()
+                    }
                 }
             }
             .sheet(isPresented: $showAddingView) {
@@ -51,7 +55,7 @@ struct ContentView: View {
     private func deleteSpendings(offsets: IndexSet) {
         withAnimation {
             offsets.map { model[$0] }
-            .forEach(managedObjContext.delete)
+                .forEach(managedObjContext.delete)
             DataController().save(context: managedObjContext)
         }
     }

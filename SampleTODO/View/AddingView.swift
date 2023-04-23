@@ -18,6 +18,7 @@ struct AddingView: View {
     @State var taskName = ""
     @State var selectedDate = Date()
     @State var notificate = true
+    @State var desc = ""
 
     var action: () -> ()
     
@@ -27,33 +28,28 @@ struct AddingView: View {
                 Form {
                     Section(header: Text("Информация")) {
                         TextField("Название", text: $taskName)
+                        TextField("Описание", text: $desc)
+                            .lineLimit(4)
+                            .multilineTextAlignment(.leading)
+                            .keyboardType(.default)
                     }
                     Section(header: Text("Дата и время")) {
                         DatePicker("Дата и время", selection: $selectedDate, in: Date()...)
                     }
-                    Section(header: Text("Уведолжения")) {
-                        HStack {
-                            Text("Отправить уведомление")
-                            Spacer()
-                            Toggle(isOn: $notificate) {
-                                Text("")
-                            }
-                        }
-                    }
                     Section(header: Text("Добавление")) {
                         HStack {
+                            Toggle("Напомнить", isOn: $notificate)
+                                .toggleStyle(RadioToggleStyle())
                             Spacer()
                             Button(action: {
                                 addButton()
                             }, label: {
                                 Label("Добавить", systemImage: "square.and.arrow.down.on.square")
                             })
-                            .padding(30)
-                            Spacer()
                         }
                     }
                 }
-                .navigationTitle("Новое дело")
+                .navigationTitle("Новая задача")
             }
         }
         .onAppear(perform: prepareHaptics)
@@ -62,9 +58,9 @@ struct AddingView: View {
         let id = UUID()
         if taskName != "" {
             complexSuccess()
-            DataController().addCase(name: taskName, when: selectedDate, id: id, context: managedObjContext)
+            DataController().addCase(name: taskName, when: selectedDate, id: id, desc: desc,context: managedObjContext)
             print(DataController().container)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.action()
             }
             withAnimation {
@@ -128,3 +124,5 @@ extension AddingView {
         }
     }
 }
+
+

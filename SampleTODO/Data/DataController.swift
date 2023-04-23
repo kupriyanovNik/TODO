@@ -29,11 +29,12 @@ class DataController: ObservableObject {
         }
     }
 
-    func addCase(name: String, when: Date, id: UUID, context: NSManagedObjectContext) {
+    func addCase(name: String, when: Date, id: UUID, desc: String,context: NSManagedObjectContext) {
         let modelCase = ModelCase(context: context)
         modelCase.name = name
         modelCase.done = false 
         modelCase.id = id
+        modelCase.desc = desc
         modelCase.when = when
         
         save(context: context)

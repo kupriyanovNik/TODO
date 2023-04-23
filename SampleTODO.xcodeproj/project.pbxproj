@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B71F406529F54E63006AE810 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71F406429F54E63006AE810 /* TaskDetailView.swift */; };
 		B7349E9129F441C300E1367B /* SampleTODOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7349E9029F441C300E1367B /* SampleTODOApp.swift */; };
 		B7349E9329F441C300E1367B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7349E9229F441C300E1367B /* ContentView.swift */; };
 		B7349E9529F441C300E1367B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7349E9429F441C300E1367B /* Assets.xcassets */; };
@@ -16,9 +17,11 @@
 		B746F6BB29F4465200076EE5 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746F6BA29F4465200076EE5 /* TaskCell.swift */; };
 		B746F6BD29F447D000076EE5 /* AddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746F6BC29F447D000076EE5 /* AddingView.swift */; };
 		B746F6BF29F44A9C00076EE5 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746F6BE29F44A9C00076EE5 /* Notifications.swift */; };
+		B791732229F571770042DD6F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B791732129F571770042DD6F /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B71F406429F54E63006AE810 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		B7349E8D29F441C300E1367B /* SampleTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7349E9029F441C300E1367B /* SampleTODOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTODOApp.swift; sourceTree = "<group>"; };
 		B7349E9229F441C300E1367B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,6 +32,7 @@
 		B746F6BA29F4465200076EE5 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		B746F6BC29F447D000076EE5 /* AddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingView.swift; sourceTree = "<group>"; };
 		B746F6BE29F44A9C00076EE5 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		B791732129F571770042DD6F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B71F406629F54E6D006AE810 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				B71F406429F54E63006AE810 /* TaskDetailView.swift */,
+				B746F6BA29F4465200076EE5 /* TaskCell.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
 		B7349E8429F441C200E1367B = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				B7349E9029F441C300E1367B /* SampleTODOApp.swift */,
+				B791732129F571770042DD6F /* Extensions.swift */,
 				B746F6C129F44BEB00076EE5 /* View */,
 				B746F6C029F44BE000076EE5 /* Notifications */,
 				B7349E9E29F441E900E1367B /* Data */,
@@ -99,7 +113,7 @@
 		B746F6C129F44BEB00076EE5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B746F6BA29F4465200076EE5 /* TaskCell.swift */,
+				B71F406629F54E6D006AE810 /* Task */,
 				B7349E9229F441C300E1367B /* ContentView.swift */,
 				B746F6BC29F447D000076EE5 /* AddingView.swift */,
 			);
@@ -176,6 +190,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B71F406529F54E63006AE810 /* TaskDetailView.swift in Sources */,
+				B791732229F571770042DD6F /* Extensions.swift in Sources */,
 				B7349E9329F441C300E1367B /* ContentView.swift in Sources */,
 				B746F6BF29F44A9C00076EE5 /* Notifications.swift in Sources */,
 				B746F6BD29F447D000076EE5 /* AddingView.swift in Sources */,
