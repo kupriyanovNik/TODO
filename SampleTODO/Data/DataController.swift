@@ -9,9 +9,7 @@ import Foundation
 import CoreData
 
 class DataController: ObservableObject {
-
     let container = NSPersistentContainer(name: "MODEL")
-
     init() {
         container.loadPersistentStores { desc, error in
             if let error = error {
@@ -19,16 +17,14 @@ class DataController: ObservableObject {
             }
         }
     }
-
     func save(context: NSManagedObjectContext) {
         do {
             try context.save()
             print("data saved")
         } catch {
-            print("can't save the data")
+            print("can't save the data: \(error.localizedDescription)")
         }
     }
-
     func addCase(name: String, when: Date, id: UUID, desc: String,context: NSManagedObjectContext) {
         let modelCase = ModelCase(context: context)
         modelCase.name = name
